@@ -1,33 +1,32 @@
-pipeline{
-
+pipeline {
     agent any
 
     stages {
+        stage ('Compile Stage') {
 
-        stage ('Compile Stage'){
-            steps{
-                withMaven(maven : maven_3_6_2){
+            steps {
+                withMaven(maven : 'maven.3.6.2') {
                     sh 'mvn clean compile'
                 }
             }
         }
 
-        stage ('Test Stage'){
-            steps{
-                withMaven(maven : maven_3_6_2){
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'maven.3.6.2') {
                     sh 'mvn test'
                 }
             }
         }
 
-        stage ('Deploy Stage'){
-            steps{
-                withMaven(maven : maven_3_6_2){
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'maven.3.6.2') {
                     sh 'mvn deploy'
                 }
             }
         }
-
     }
-
 }
