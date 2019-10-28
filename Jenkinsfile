@@ -6,16 +6,7 @@ pipeline {
 
             steps {
                 withMaven(maven : 'maven.3.6.2') {
-                    bat 'mvn clean compile'
-                }
-            }
-        }
-
-        stage ('Testing Stage') {
-
-            steps {
-                withMaven(maven : 'maven.3.6.2') {
-                    bat 'mvn test'
+                    bat 'mvn clean compile surefire-report:report -Daggregate=true'
                 }
             }
         }
