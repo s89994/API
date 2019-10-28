@@ -19,14 +19,5 @@ pipeline {
                 }
             }
         }
-
-
-   <!--     stage ('Deployment Stage') {
-            steps {
-                withMaven(maven : 'maven.3.6.2') {
-                    bat 'mvn deploy -PPROD'
-                }
-            }
-        } -->
     }
 }
